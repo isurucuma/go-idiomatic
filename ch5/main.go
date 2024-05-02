@@ -1,33 +1,26 @@
 package main
 
-import "errors"
-
-var operations = map[string]func(int, int) (int, error){
-	"+": func(a, b int) (int, error) { return a + b, nil },
-	"-": func(a, b int) (int, error) { return a - b, nil },
-	"*": func(a, b int) (int, error) { return a * b, nil },
-	"/": func(a, b int) (int, error) {
-		if b == 0 {
-			return 0, errors.New("division by zero")
-		}
-		return a / b, nil
-	},
-}
-
-func calculate(a int, b int, op string) (int, error) {
-	if operation, ok := operations[op]; ok {
-		return operation(a, b)
-	}
-	return 0, errors.New("operation not found")
-}
+import (
+	"fmt"
+	"functions/utils"
+)
 
 func main() {
-	a, b := 10, 0
+	a, b := 10, 2
 	op := "/"
-	result, err := calculate(a, b, op)
+	utils.Run(a, b, op)
+
+	// file length
+	filename := "main.go"
+	length, err := utils.Filelen(filename)
 	if err != nil {
 		println("Error:", err.Error())
 	} else {
-		println("Result:", result)
+		println("Length:", length, "bytes")
 	}
+
+	// prefix
+	helloPrefix := utils.Prefixer("Hello")
+	fmt.Println(helloPrefix("Bob"))   // should print Hello Bob
+	fmt.Println(helloPrefix("Maria")) // should print Hello Maria
 }
