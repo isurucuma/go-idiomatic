@@ -1,0 +1,56 @@
+Result : 
+gc 1 @0.003s 2%: 0.009+1.9+0.002 ms clock, 0.077+0.37/0.82/1.1+0.022 ms cpu, 8->8->1 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 2 @0.007s 7%: 0.010+5.5+0.004 ms clock, 0.080+0.77/5.8/0.006+0.033 ms cpu, 10->10->3 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 3 @0.014s 9%: 0.027+9.6+0.004 ms clock, 0.22+0/9.6/0.024+0.038 ms cpu, 13->13->5 MB, 13 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 4 @0.025s 10%: 0.017+12+0.003 ms clock, 0.14+1.3/13/0.010+0.028 ms cpu, 21->21->8 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 5 @0.042s 11%: 0.025+17+0.004 ms clock, 0.20+1.5/19/1.6+0.032 ms cpu, 33->33->13 MB, 33 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 6 @0.065s 11%: 0.021+26+0.004 ms clock, 0.17+0/29/2.7+0.036 ms cpu, 51->51->21 MB, 51 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 7 @0.099s 11%: 0.020+50+0.003 ms clock, 0.16+0/52/14+0.028 ms cpu, 80->80->33 MB, 80 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 8 @0.162s 11%: 0.079+75+0.004 ms clock, 0.63+0/75/0+0.036 ms cpu, 126->126->51 MB, 126 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 9 @0.252s 11%: 0.022+85+0.006 ms clock, 0.18+0.007/92/34+0.049 ms cpu, 197->197->80 MB, 197 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 10 @0.360s 12%: 0.023+138+0.003 ms clock, 0.18+19/157/22+0.028 ms cpu, 308->308->126 MB, 308 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 11 @0.573s 11%: 0.022+135+0.003 ms clock, 0.17+17/152/51+0.030 ms cpu, 481->481->197 MB, 481 MB goal, 0 MB stacks, 0 MB globals, 8 P
+gc 12 @0.835s 10%: 0.093+235+0.003 ms clock, 0.75+20/262/119+0.029 ms cpu, 752->752->308 MB, 752 MB goal, 0 MB stacks, 0 MB globals, 8 P
+
+Certainly! The output you provided is related to garbage collection (GC) in Go. Let's break down each line:
+- General Format:
+    - Each line represents a garbage collection cycle (GC cycle).
+    - The format of each line is as follows:
+
+gc <cycle_number> @<timestamp> <percentage>: <pause_time> ms clock, <cpu_time> ms cpu, <heap_size_before>-><heap_size_after>-><heap_goal> MB, <stacks_size> MB stacks, <globals_size> MB globals, <P>
+
+- Explanation of Fields:
+    - <cycle_number>: The sequential number of the GC cycle.
+    - <timestamp>: The time when the GC cycle occurred (in seconds).
+    - <percentage>: The percentage of CPU time spent on GC during this cycle.
+    - <pause_time>: The total pause time (time spent in GC-related activities) during this cycle.
+    - <cpu_time>: The total CPU time spent in GC-related activities during this cycle.
+    - <heap_size_before>: Heap size (in MB) before the GC cycle.
+    - <heap_size_after>: Heap size after the GC cycle.
+    - <heap_goal>: The target heap size (goal) for the GC.
+    - <stacks_size>: Stack size (in MB).
+    - <globals_size>: Globals size (in MB).
+    - <P>: The number of processors (P) used for GC.
+- Interpretation:
+    - The GC cycle is triggered automatically by the Go runtime to manage memory.
+    - The goal of GC is to reclaim memory occupied by objects that are no longer reachable (garbage).
+    - During each cycle, the program execution is paused (<pause_time>), and the GC performs its tasks.
+    - The CPU time spent in GC activities is shown as <cpu_time>.
+    - The heap size (<heap_size_before> and <heap_size_after>) changes as memory is allocated or freed.
+    - The <heap_goal> represents the target heap size.
+    - The stack and globals sizes are also reported.
+    - The <P> value indicates the number of processors used for GC.
+- Example Interpretation:
+    - For example, in the first line:
+        - GC cycle number 1 occurred at timestamp 0.003 seconds.
+        - The GC spent 2% of CPU time.
+        - The total pause time was 0.009 ms.
+        - The total CPU time spent in GC activities was 0.077 ms.
+        - The heap size changed from 8 MB to 8 MB (no change).
+        - The goal heap size is 8 MB.
+        - There were no stacks or globals.
+        - 8 processors were used for GC.
+- Overall:
+    - These lines provide insights into how the Go runtime manages memory and performs garbage collection.
+    - The specific values (such as heap sizes, pause times, and CPU times) vary based on your program's behavior and memory usage.
+Remember that GC behavior can vary depending on factors like memory allocation patterns, heap growth, and the specific workload of your program . 😊
