@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"os"
 	"sort"
 )
 
@@ -32,6 +34,16 @@ func (l League) Ranking() []string {
 	return teamsNames
 }
 
+type Ranker interface {
+	Ranking() []string
+}
+
+func RankPrinter(r Ranker, w io.Writer) {
+	for i, Team := range r.Ranking() {
+		io.WriteString(w, fmt.Sprintf("%d %s\n", i+1, Team))
+	}
+}
+
 func main() {
 	// Create teams
 	team1 := Team{
@@ -55,9 +67,12 @@ func main() {
 	league.MatchResult("Team 2", 3, "Team 1", 0)
 
 	// Get ranking
-	ranking := league.Ranking()
-	fmt.Println("Ranking:")
-	for i, team := range ranking {
-		fmt.Printf("%d. %s\n", i+1, team)
-	}
+	// ranking := league.Ranking()
+	// fmt.Println("Ranking:")
+	// for i, team := range ranking {
+	// 	fmt.Printf("%d. %s\n", i+1, team)
+	// }
+
+	var ranker Ranker = league
+	RankPrinter(ranker, os.Stdout)
 }
