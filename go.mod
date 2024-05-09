@@ -1,4 +1,4 @@
-module github.com/isurucuma/go-idiomatic/v1
+module github.com/isurucuma/go-idiomatic/v2
 
 go 1.22.1
 
