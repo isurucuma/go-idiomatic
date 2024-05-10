@@ -6,7 +6,7 @@ BINAY_NAME := myapp
 
 build:
 	@echo "Building the project..."
-	go build -o ${BINAY_NAME} main.go
+	GOOS=linux GOARCH=amd64 go build -o ${BINAY_NAME} main.go
 
 run: build
 	@echo "Running the project..."
